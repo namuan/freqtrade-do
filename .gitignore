@@ -95,3 +95,6 @@ venv
 
 #exceptions
 !*.gitkeep
+
+# Local copy of freqtrade
+freqtrade/

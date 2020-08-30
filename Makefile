@@ -34,6 +34,15 @@ deployapp: clean ## Deploy application
 ssh: ## ssh into project server
 	ssh ${PROJECTNAME}
 
+setupfqlocal: ## Setup locally
+	./scripts/freqtrade-install.sh
+
+updatefqlocal: ## Setup locally
+	./scripts/freqtrade-update.sh
+
+source: ## Command to source env
+	echo "deactivate; source ./freqtrade/.env/bin/activate"
+
 setupfq: deployapp ## Start installation
 	ssh ${PROJECTNAME} -C 'bash -l -c "cd ${REMOTEDIR};./scripts/freqtrade-install.sh"'
 
