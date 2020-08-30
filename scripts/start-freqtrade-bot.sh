@@ -1,1 +1,1 @@
-./freqtrade/.env/bin/freqtrade trade -c config.json --strategy CandleStick --logfile freqtrade.log
+./freqtrade/.env/bin/freqtrade trade -c config.json --strategy CandleStickStrategy --logfile freqtrade.log
