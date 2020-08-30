@@ -1,0 +1,15 @@
+# ansible/playbook.yml
+---
+- name: Prepare server
+  hosts: all
+  become: true
+
+  roles:
+  - { role: sshd, tags: [sshd] }
+  - swapfile
+  
+- hosts: all
+  become: true
+
+  roles:
+  - common

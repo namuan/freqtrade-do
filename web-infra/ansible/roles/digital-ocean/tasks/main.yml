@@ -1,0 +1,24 @@
+---
+- name: Adds SSH key to the authentication agent
+  shell: ssh-add -K {{ssh_pub_key}}
+
+- name: Create DigitalOcean Droplet
+  digital_ocean_droplet:
+    state: present
+    name: "{{app_name}}"
+    oauth_token: "{{digital_ocean_api_token}}"
+    size: "s-1vcpu-1gb"
+    region: "lon1"
+    image: ubuntu-18-04-x64
+    ssh_keys: ["{{ssh_pub_fingerprint}}"]
+    wait: true
+    unique_name: yes
+  register: digital_ocean_droplet
+
+- name: create ssh config from template
+  template:
+    src: ssh.config.j2
+    dest: "~/.ssh/config.d/config-{{app_name}}"
+
+- name: Output Droplet IP
+  debug: msg="Droplet IP is {{ digital_ocean_droplet.data.ip_address }}"

@@ -1,0 +1,22 @@
+---
+app_name: "{{ lookup('env','PROJECTNAME') }}"
+remote_dir: "{{ lookup('env','REMOTEDIR') }}"
+
+deploy_user: manu
+app_dir: /home/{{deploy_user}}/{{remote_dir}}
+
+ssh_pub_key: "{{ lookup('env','DIGITAL_OCEAN_SSH_KEY') }}"
+ssh_pub_fingerprint: "{{ lookup('env','DIGITAL_OCEAN_SSH_FINGERPRINT') }}"
+digital_ocean_api_token: "{{ lookup('env','DIGITAL_OCEAN_TOKEN') }}"
+
+swapfile_size: 1GB
+swapfile_swappiness: "10"
+swapfile_vfs_cache_pressure: "50"
+
+ntp_enabled: true
+ntp_timezone: Etc/UTC
+ntp_manage_config: true
+
+sshd:
+  PermitRootLogin: no
+  PasswordAuthentication: no

@@ -1,0 +1,8 @@
+# ansible/playbook.yml
+---
+- name: Setup DigitalOcean Droplet
+  hosts: localhost
+  gather_facts: false
+  
+  roles:
+  - digital-ocean
