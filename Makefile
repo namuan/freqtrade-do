@@ -26,8 +26,10 @@ clean: ## Cleans all cached files
 deployapp: clean ## Deploy application
 	ssh ${PROJECTNAME} -C "mkdir -vp ./${REMOTEDIR}"
 	rsync -avzr \
+        		./user_data/strategies \
+        		${PROJECTNAME}:./${REMOTEDIR}/user_data
+	rsync -avzr \
     		./config.json \
-    		./user_data \
     		./scripts \
     		${PROJECTNAME}:./${REMOTEDIR}/
 
