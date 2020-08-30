@@ -95,8 +95,3 @@ venv
 
 #exceptions
 !*.gitkeep
-
-#secrets
-config.json
-
-user_data/strategies
